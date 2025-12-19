@@ -3,153 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slozw - Services | Créations Digitales</title>
+    <title>Slozw - Services | Développement Web & Digital</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Styles spécifiques pour le popup de cookies */
-        .cookie-popup {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            padding: 1.5rem;
-            max-width: 350px;
-            z-index: 9999;
-            transform: translateY(100px);
-            opacity: 0;
-            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            border: 1px solid #e2e8f0;
-        }
-        
-        .cookie-popup.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        .cookie-popup.hide {
-            transform: translateY(100px);
-            opacity: 0;
-        }
-        
-        .cookie-popup-content h3 {
-            margin-bottom: 0.5rem;
-            color: #1e293b;
-            font-size: 1.2rem;
-        }
-        
-        .cookie-popup-content p {
-            color: #64748b;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            line-height: 1.5;
-        }
-        
-        .cookie-popup-actions {
-            display: flex;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-        }
-        
-        .cookie-popup-btn {
-            padding: 0.6rem 1.2rem;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s;
-            flex: 1;
-            min-width: 100px;
-        }
-        
-        .cookie-popup-accept {
-            background: #2563eb;
-            color: white;
-        }
-        
-        .cookie-popup-accept:hover {
-            background: #1d4ed8;
-        }
-        
-        .cookie-popup-reject {
-            background: #f8fafc;
-            color: #64748b;
-            border: 1px solid #e2e8f0;
-        }
-        
-        .cookie-popup-reject:hover {
-            background: #f1f5f9;
-        }
-        
-        .cookie-popup-close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: none;
-            border: none;
-            color: #94a3b8;
-            cursor: pointer;
-            font-size: 1.2rem;
-            padding: 5px;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: background 0.3s;
-        }
-        
-        .cookie-popup-close:hover {
-            background: #f8fafc;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .cookie-popup {
-                left: 20px;
-                right: 20px;
-                max-width: none;
-                bottom: 10px;
-            }
-            
-            .cookie-popup-actions {
-                flex-direction: column;
-            }
-            
-            .cookie-popup-btn {
-                width: 100%;
-            }
-        }
-    </style>
 </head>
 <body>
-    <!-- Popup Cookies (Nouveau système) -->
-    <div class="cookie-popup" id="cookiePopup">
-        <button class="cookie-popup-close" id="cookiePopupClose">
-            <i class="fas fa-times"></i>
-        </button>
-        <div class="cookie-popup-content">
-            <h3>🍪 Cookies et confidentialité</h3>
-            <p>Nous utilisons des cookies essentiels pour le bon fonctionnement du site. En continuant, vous acceptez notre politique de confidentialité.</p>
-            <div class="cookie-popup-actions">
-                <button class="cookie-popup-btn cookie-popup-reject" id="cookiePopupReject">
-                    Refuser
-                </button>
-                <button class="cookie-popup-btn cookie-popup-accept" id="cookiePopupAccept">
-                    Accepter
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Navigation -->
+    <!-- Navigation (identique aux autres pages) -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo">Slozw</a>
+            <a href="index.html" class="logo">
+                <i class="fas fa-code"></i> Slozw
+            </a>
             <div class="nav-links">
                 <a href="index.html">Accueil</a>
                 <a href="services.html" class="active">Services</a>
@@ -158,9 +22,7 @@
                 <a href="contact.html">Contact</a>
             </div>
             <div class="nav-actions">
-                <!-- Sélecteur de langue SUPPRIMÉ -->
-                
-                <a href="#panier" class="panier-btn">
+                <a href="panier.html" class="panier-btn">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="panier-count">0</span>
                 </a>
@@ -171,146 +33,128 @@
         </div>
     </nav>
 
-    <!-- Services Header -->
+    <!-- Header Services -->
     <section class="page-header">
         <div class="container">
             <h1>Mes Services</h1>
-            <p>Des solutions digitales complètes adaptées à vos besoins</p>
+            <p>Des solutions digitales complètes pour votre projet</p>
         </div>
     </section>
 
-    <!-- Services List -->
+    <!-- Services Grid -->
     <section class="section services-detail">
         <div class="container">
-            <!-- Service 1 -->
-            <div class="service-detail-card" id="design">
-                <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="UI/UX Design" loading="lazy">
-                </div>
-                <div class="service-content">
-                    <span class="service-category">Design</span>
-                    <h2>UI/UX Design</h2>
-                    <p>Création d'interfaces utilisateur intuitives et esthétiques qui offrent une expérience exceptionnelle.</p>
-                    
-                    <div class="service-features">
-                        <h3>Ce que j'offre :</h3>
-                        <ul>
-                            <li><i class="fas fa-check"></i> Design d'interface utilisateur</li>
-                            <li><i class="fas fa-check"></i> Recherche utilisateur</li>
-                            <li><i class="fas fa-check"></i> Prototypage interactif</li>
-                            <li><i class="fas fa-check"></i> Design system complet</li>
-                            <li><i class="fas fa-check"></i> Tests d'utilisabilité</li>
+            <div class="service-cards-detailed">
+                <div class="service-detailed">
+                    <div class="service-header">
+                        <div class="service-icon-large">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>Développement Web Sur Mesure</h3>
+                    </div>
+                    <div class="service-body">
+                        <p>Création de sites web et applications sur mesure avec les technologies les plus récentes.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Sites vitrines responsive</li>
+                            <li><i class="fas fa-check"></i> Applications web complexes</li>
+                            <li><i class="fas fa-check"></i> API REST personnalisées</li>
+                            <li><i class="fas fa-check"></i> Intégration CMS</li>
                         </ul>
-                    </div>
-                    
-                    <div class="service-pricing">
-                        <h3>Tarifs :</h3>
-                        <p>À partir de <strong>499€</strong> pour un design de site web</p>
-                    </div>
-                    
-                    <div class="service-actions">
-                        <a href="contact.html" class="btn btn-primary">Demander un devis</a>
-                        <a href="boutique.html" class="btn btn-outline">Commander ce service</a>
+                        <div class="service-technologies">
+                            <h4>Technologies :</h4>
+                            <div class="tech-tags">
+                                <span>React</span>
+                                <span>Vue.js</span>
+                                <span>Node.js</span>
+                                <span>PHP</span>
+                                <span>WordPress</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Service 2 -->
-            <div class="service-detail-card" id="developpement">
-                <div class="service-content">
-                    <span class="service-category">Développement</span>
-                    <h2>Développement Web</h2>
-                    <p>Sites web performants, responsives et optimisés construits avec les technologies les plus récentes.</p>
-                    
-                    <div class="service-features">
-                        <h3>Ce que j'offre :</h3>
-                        <ul>
-                            <li><i class="fas fa-check"></i> Sites vitrines & corporate</li>
-                            <li><i class="fas fa-check"></i> Applications web sur mesure</li>
-                            <li><i class="fas fa-check"></i> Intégration responsive</li>
-                            <li><i class="fas fa-check"></i> Optimisation SEO technique</li>
-                            <li><i class="fas fa-check"></i> Maintenance & hébergement</li>
-                        </ul>
+                <div class="service-detailed">
+                    <div class="service-header">
+                        <div class="service-icon-large">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h3>Solutions E-commerce</h3>
                     </div>
-                    
-                    <div class="service-pricing">
-                        <h3>Tarifs :</h3>
-                        <p>À partir de <strong>899€</strong> pour un site web complet</p>
-                    </div>
-                    
-                    <div class="service-actions">
-                        <a href="contact.html" class="btn btn-primary">Demander un devis</a>
-                        <a href="boutique.html" class="btn btn-outline">Commander ce service</a>
-                    </div>
-                </div>
-                <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Développement Web" loading="lazy">
-                </div>
-            </div>
-
-            <!-- Service 3 -->
-            <div class="service-detail-card" id="ecommerce">
-                <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="E-commerce" loading="lazy">
-                </div>
-                <div class="service-content">
-                    <span class="service-category">E-commerce</span>
-                    <h2>Boutiques en Ligne</h2>
-                    <p>Création de boutiques e-commerce complètes avec gestion des stocks, paiements sécurisés et optimisation conversion.</p>
-                    
-                    <div class="service-features">
-                        <h3>Ce que j'offre :</h3>
-                        <ul>
-                            <li><i class="fas fa-check"></i> Design de boutique personnalisé</li>
-                            <li><i class="fas fa-check"></i> Intégration Stripe/PayPal</li>
-                            <li><i class="fas fa-check"></i> Gestion des produits & stocks</li>
+                    <div class="service-body">
+                        <p>Boutiques en ligne performantes optimisées pour la conversion et le référencement.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Paiements sécurisés</li>
+                            <li><i class="fas fa-check"></i> Gestion des stocks</li>
+                            <li><i class="fas fa-check"></i> SEO e-commerce</li>
                             <li><i class="fas fa-check"></i> Dashboard administrateur</li>
-                            <li><i class="fas fa-check"></i> Optimisation mobile</li>
                         </ul>
-                    </div>
-                    
-                    <div class="service-pricing">
-                        <h3>Tarifs :</h3>
-                        <p>À partir de <strong>1499€</strong> pour une boutique en ligne</p>
-                    </div>
-                    
-                    <div class="service-actions">
-                        <a href="contact.html" class="btn btn-primary">Demander un devis</a>
-                        <a href="boutique.html" class="btn btn-outline">Commander ce service</a>
+                        <div class="service-technologies">
+                            <h4>Technologies :</h4>
+                            <div class="tech-tags">
+                                <span>Shopify</span>
+                                <span>WooCommerce</span>
+                                <span>Magento</span>
+                                <span>Stripe</span>
+                                <span>PayPal</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Service 4 -->
-            <div class="service-detail-card" id="maintenance">
-                <div class="service-content">
-                    <span class="service-category">Support</span>
-                    <h2>Maintenance & Support</h2>
-                    <p>Services de maintenance continue, mises à jour, et support technique pour votre site web.</p>
-                    
-                    <div class="service-features">
-                        <h3>Ce que j'offre :</h3>
-                        <ul>
-                            <li><i class="fas fa-check"></i> Maintenance technique régulière</li>
-                            <li><i class="fas fa-check"></i> Mises à jour de sécurité</li>
-                            <li><i class="fas fa-check"></i> Sauvegardes automatiques</li>
-                            <li><i class="fas fa-check"></i> Support technique 24/7</li>
-                            <li><i class="fas fa-check"></i> Optimisation des performances</li>
+                <div class="service-detailed">
+                    <div class="service-header">
+                        <div class="service-icon-large">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Applications Mobile</h3>
+                    </div>
+                    <div class="service-body">
+                        <p>Applications natives et cross-platform pour iOS et Android.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Applications natives iOS/Android</li>
+                            <li><i class="fas fa-check"></i> Applications cross-platform</li>
+                            <li><i class="fas fa-check"></i> Intégration API</li>
+                            <li><i class="fas fa-check"></i> Publication sur les stores</li>
                         </ul>
-                    </div>
-                    
-                    <div class="service-pricing">
-                        <h3>Forfaits mensuels :</h3>
-                        <p>À partir de <strong>99€/mois</strong> pour la maintenance complète</p>
-                    </div>
-                    
-                    <div class="service-actions">
-                        <a href="contact.html" class="btn btn-primary">Demander un devis</a>
-                        <a href="boutique.html" class="btn btn-outline">S'abonner</a>
+                        <div class="service-technologies">
+                            <h4>Technologies :</h4>
+                            <div class="tech-tags">
+                                <span>React Native</span>
+                                <span>Flutter</span>
+                                <span>Swift</span>
+                                <span>Kotlin</span>
+                                <span>Firebase</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Maintenance" loading="lazy">
+
+                <div class="service-detailed">
+                    <div class="service-header">
+                        <div class="service-icon-large">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3>Design UI/UX</h3>
+                    </div>
+                    <div class="service-body">
+                        <p>Interfaces utilisateur intuitives et expériences digitales mémorables.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Wireframes et prototypes</li>
+                            <li><i class="fas fa-check"></i> Design system</li>
+                            <li><i class="fas fa-check"></i> Tests utilisateurs</li>
+                            <li><i class="fas fa-check"></i> Identité visuelle</li>
+                        </ul>
+                        <div class="service-technologies">
+                            <h4>Technologies :</h4>
+                            <div class="tech-tags">
+                                <span>Figma</span>
+                                <span>Adobe XD</span>
+                                <span>Sketch</span>
+                                <span>Photoshop</span>
+                                <span>Illustrator</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -320,38 +164,26 @@
     <section class="section process-section">
         <div class="container">
             <h2 class="section-title">Mon Processus de Travail</h2>
-            
             <div class="process-steps">
-                <div class="step">
+                <div class="process-step">
                     <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>Consultation</h3>
-                        <p>Analyse de vos besoins et objectifs pour définir la stratégie.</p>
-                    </div>
+                    <h3>Analyse des besoins</h3>
+                    <p>Compréhension approfondie de votre projet et de vos objectifs.</p>
                 </div>
-                
-                <div class="step">
+                <div class="process-step">
                     <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>Conception</h3>
-                        <p>Création des maquettes et validation des visuels.</p>
-                    </div>
+                    <h3>Conception</h3>
+                    <p>Création des maquettes et validation de l'expérience utilisateur.</p>
                 </div>
-                
-                <div class="step">
+                <div class="process-step">
                     <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>Développement</h3>
-                        <p>Codage et intégration des fonctionnalités.</p>
-                    </div>
+                    <h3>Développement</h3>
+                    <p>Implémentation technique avec les meilleures pratiques.</p>
                 </div>
-                
-                <div class="step">
+                <div class="process-step">
                     <div class="step-number">4</div>
-                    <div class="step-content">
-                        <h3>Livraison</h3>
-                        <p>Tests, formation et support post-lancement.</p>
-                    </div>
+                    <h3>Livraison & Support</h3>
+                    <p>Déploiement et accompagnement pour la réussite de votre projet.</p>
                 </div>
             </div>
         </div>
@@ -361,22 +193,23 @@
     <section class="section cta-section">
         <div class="container">
             <div class="cta-content">
-                <h2>Prêt à travailler ensemble ?</h2>
-                <p>Contactez-moi pour discuter de votre projet</p>
-                <a href="contact.html" class="btn btn-primary">Me contacter</a>
+                <h2>Prêt à concrétiser votre projet ?</h2>
+                <p>Discutons de vos besoins et trouvons la solution parfaite</p>
+                <a href="contact.html" class="btn btn-primary">
+                    <i class="fas fa-comments"></i> Demander un devis
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer (identique) -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h3>Slozw</h3>
+                    <h3><i class="fas fa-code"></i> Slozw</h3>
                     <p>Créateur digital spécialisé en design, développement et e-commerce.</p>
                 </div>
-                
                 <div class="footer-col">
                     <h4>Navigation</h4>
                     <a href="index.html">Accueil</a>
@@ -385,20 +218,17 @@
                     <a href="boutique.html">Boutique</a>
                     <a href="contact.html">Contact</a>
                 </div>
-                
                 <div class="footer-col">
-                    <h4>Services</h4>
-                    <a href="services.html#design">UI/UX Design</a>
-                    <a href="services.html#developpement">Développement Web</a>
-                    <a href="services.html#ecommerce">E-commerce</a>
-                    <a href="services.html#maintenance">Maintenance</a>
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-envelope"></i> contact@slozw.com</p>
+                    <p><i class="fas fa-phone"></i> +33 1 23 45 67 89</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Paris, France</p>
                 </div>
             </div>
-            
             <div class="footer-bottom">
-                <p>&copy; 2024 Slozw. Tous droits réservés.</p>
+                <p>© 2024 Slozw. Tous droits réservés.</p>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
                     <a href="#"><i class="fab fa-linkedin"></i></a>
                     <a href="#"><i class="fab fa-behance"></i></a>
                 </div>
@@ -406,76 +236,11 @@
         </div>
     </footer>
 
-    <!-- Notification -->
-    <div class="notification" id="notification"></div>
-
-    <!-- Script -->
     <script src="script.js"></script>
     <script>
-        // Gestion du nouveau popup de cookies (identique à index.html)
         document.addEventListener('DOMContentLoaded', function() {
-            const cookiePopup = document.getElementById('cookiePopup');
-            const cookieAccept = document.getElementById('cookiePopupAccept');
-            const cookieReject = document.getElementById('cookiePopupReject');
-            const cookieClose = document.getElementById('cookiePopupClose');
-            
-            const cookieChoice = localStorage.getItem('cookieChoice');
-            
-            if (!cookieChoice) {
-                setTimeout(() => {
-                    cookiePopup.classList.add('show');
-                }, 1000);
-            }
-            
-            cookieAccept.addEventListener('click', function() {
-                localStorage.setItem('cookieChoice', 'accepted');
-                cookiePopup.classList.remove('show');
-                cookiePopup.classList.add('hide');
-                
-                setTimeout(() => {
-                    cookiePopup.style.display = 'none';
-                }, 500);
-                
-                showNotification('Préférences de cookies enregistrées', 'success');
-            });
-            
-            cookieReject.addEventListener('click', function() {
-                localStorage.setItem('cookieChoice', 'rejected');
-                cookiePopup.classList.remove('show');
-                cookiePopup.classList.add('hide');
-                
-                setTimeout(() => {
-                    cookiePopup.style.display = 'none';
-                }, 500);
-                
-                showNotification('Préférences de cookies enregistrées', 'success');
-            });
-            
-            cookieClose.addEventListener('click', function() {
-                cookiePopup.classList.remove('show');
-                cookiePopup.classList.add('hide');
-                
-                setTimeout(() => {
-                    cookiePopup.style.display = 'none';
-                }, 500);
-                
-                if (!cookieChoice) {
-                    localStorage.setItem('cookieChoice', 'closed');
-                }
-            });
-            
-            function showNotification(message, type = 'success') {
-                const notification = document.getElementById('notification');
-                if (!notification) return;
-                
-                notification.textContent = message;
-                notification.className = 'notification';
-                notification.classList.add(type, 'show');
-                
-                setTimeout(() => {
-                    notification.classList.remove('show');
-                }, 3000);
-            }
+            updateCartCount();
+            initMobileMenu();
         });
     </script>
 </body>
