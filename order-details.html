@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slozw - Détails de commande</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .order-details-section {
+            padding: 100px 0 60px;
+            background: #f8fafc;
+            min-height: calc(100vh - 200px);
+        }
+        
+        .order-header {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .order-info h1 {
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .order-meta {
+            color: #64748b;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .order-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .order-timeline {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-title {
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .timeline-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        }
+        
+        .timeline-steps::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: #e2e8f0;
+            z-index: 1;
+        }
+        
+        .timeline-step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+        }
+        
+        .step-icon {
+            width: 40px;
+            height: 40px;
+            background: #f1f5f9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.75rem;
+            color: #94a3b8;
+            font-size: 1.2rem;
+        }
+        
+        .timeline-step.active .step-icon {
+            background: #2563eb;
+            color: white;
+        }
+        
+        .timeline-step.completed .step-icon {
+            background: #10b981;
+            color: white;
+        }
+        
+        .step-label {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+        
+        .timeline-step.active .step-label {
+            color: #2563eb;
+            font-weight: 500;
+        }
+        
+        .timeline-step.completed .step-label {
+            color: #059669;
+        }
+        
+        .order-items {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .items-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .items-table th {
+            text-align: left;
+            padding: 1rem;
+            background: #f8fafc;
+            color: #64748b;
+            font-weight: 500;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .items-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        .item-name {
+            color: #1e293b;
+            font-weight: 500;
+        }
+        
+        .item-price {
+            color: #64748b;
+        }
+        
+        .item-total {
+            color: #1e293b;
+            font-weight: 600;
+        }
+        
+        .order-summary {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        .summary-row.total {
+            border-top: 2px solid #e2e8f0;
+            border-bottom: none;
+            margin-top: 1rem;
+            padding-top: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-steps {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .timeline-steps::before {
+                display: none;
+            }
+            
+            .items-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .order-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .order-actions {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Slozw</a>
+            <div class="nav-links">
+                <a href="index.html">Accueil</a>
+                <a href="services.html">Services</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="boutique.html">Boutique</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <!-- Auth buttons seront injectés ici -->
+                <a href="boutique.html#panier" class="panier-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="panier-count">0</span>
+                </a>
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Détails de commande -->
+    <section class="order-details-section">
+        <div class="container">
+            <!-- En-tête -->
+            <div class="order-header">
+                <div class="order-info">
+                    <h1 id="orderTitle">Commande #SLZW-000000</h1>
+                    <div class="order-meta">
+                        <span id="orderDate">Date: --/--/----</span>
+                        <span id="orderStatus">Statut: --</span>
+                        <span id="orderTotal">Total: 0€</span>
+                    </div>
+                </div>
+                <div class="order-actions">
+                    <a href="orders.html" class="btn btn-outline">
+                        <i class="fas fa-arrow-left"></i> Retour
+                    </a>
+                    <button class="btn btn-primary" id="downloadInvoice">
+                        <i class="fas fa-download"></i> Facture
+                    </button>
+                </div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="order-timeline">
+                <h3 class="timeline-title">Suivi de commande</h3>
+                <div class="timeline-steps">
+                    <div class="timeline-step completed" id="step1">
+                        <div class="step-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="step-label">Commande passée</div>
+                    </div>
+                    <div class="timeline-step completed" id="step2">
+                        <div class="step-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="step-label">Confirmée</div>
+                    </div>
+                    <div class="timeline-step active" id="step3">
+                        <div class="step-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="step-label">En développement</div>
+                    </div>
+                    <div class="timeline-step" id="step4">
+                        <div class="step-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="step-label">Livrée</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Articles -->
+            <div class="order-items">
+                <h3 style="margin-bottom: 1.5rem; color: #1e293b;">Articles commandés</h3>
+                <table class="items-table" id="itemsTable">
+                    <thead>
+                        <tr>
+                            <th>Produit</th>
+                            <th>Quantité</th>
+                            <th>Prix unitaire</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="itemsBody">
+                        <!-- Les articles seront injectés ici -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Résumé -->
+            <div class="order-summary">
+                <h3 style="margin-bottom: 1.5rem; color: #1e293b;">Résumé de la commande</h3>
+                <div class="summary-row">
+                    <span>Sous-total</span>
+                    <span id="subtotal">0€</span>
+                </div>
+                <div class="summary-row">
+                    <span>Réduction</span>
+                    <span id="discount">-0€</span>
+                </div>
+                <div class="summary-row">
+                    <span>Frais de service</span>
+                    <span id="fees">0€</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total</span>
+                    <span id="finalTotal">0€</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Slozw</h3>
+                    <p>Créateur digital spécialisé en design, développement et e-commerce.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <a href="index.html">Accueil</a>
+                    <a href="services.html">Services</a>
+                    <a href="portfolio.html">Portfolio</a>
+                    <a href="boutique.html">Boutique</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <a href="contact.html">Contact</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="terms.html">Conditions générales</a>
+                    <a href="privacy.html">Confidentialité</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Slozw. Tous droits réservés.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-behance"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Vérifier l'authentification
+            if (!auth.isLoggedIn()) {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            // Récupérer l'ID de la commande depuis l'URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const orderId = urlParams.get('id');
+            
+            if (!orderId) {
+                window.location.href = 'orders.html';
+                return;
+            }
+            
+            // Charger les détails de la commande
+            loadOrderDetails(orderId);
+            
+            // Télécharger la facture
+            document.getElementById('downloadInvoice').addEventListener('click', function() {
+                generateInvoice(orderId);
+            });
+        });
+        
+        function loadOrderDetails(orderId) {
+            const orders = JSON.parse(localStorage.getItem('userOrders')) || [];
+            const order = orders.find(o => o.id === orderId);
+            const user = auth.getCurrentUser();
+            
+            if (!order || order.userId !== user.id) {
+                showNotification('Commande non trouvée', 'error');
+                setTimeout(() => {
+                    window.location.href = 'orders.html';
+                }, 2000);
+                return;
+            }
+            
+            // Mettre à jour l'en-tête
+            document.getElementById('orderTitle').textContent = `Commande #${order.reference}`;
+            document.getElementById('orderDate').textContent = `Date: ${new Date(order.date).toLocaleDateString('fr-FR')}`;
+            document.getElementById('orderStatus').textContent = `Statut: ${getStatusText(order.status)}`;
+            document.getElementById('orderTotal').textContent = `Total: ${order.total}€`;
+            
+            // Mettre à jour la timeline
+            updateTimeline(order.status);
+            
+            // Mettre à jour les articles
+            const itemsBody = document.getElementById('itemsBody');
+            itemsBody.innerHTML = '';
+            
+            let subtotal = 0;
+            order.articles.forEach(item => {
+                const itemTotal = item.prix * item.quantite;
+                subtotal += itemTotal;
+                
+                itemsBody.innerHTML += `
+                    <tr>
+                        <td class="item-name">${item.nom}</td>
+                        <td>${item.quantite}</td>
+                        <td class="item-price">${item.prix}€</td>
+                        <td class="item-total">${itemTotal}€</td>
+                    </tr>
+                `;
+            });
+            
+            // Mettre à jour le résumé
+            document.getElementById('subtotal').textContent = `${subtotal}€`;
+            document.getElementById('finalTotal').textContent = `${order.total}€`;
+            
+            // Calculer la réduction
+            const discount = subtotal - order.total;
+            document.getElementById('discount').textContent = discount > 0 ? `-${discount}€` : '0€';
+        }
+        
+        function updateTimeline(status) {
+            // Réinitialiser toutes les étapes
+            for (let i = 1; i <= 4; i++) {
+                const step = document.getElementById(`step${i}`);
+                step.classList.remove('active', 'completed');
+            }
+            
+            // Activer les étapes selon le statut
+            const statusMap = {
+                'pending': 1,
+                'processing': 3,
+                'completed': 4,
+                'cancelled': 1
+            };
+            
+            const activeStep = statusMap[status] || 1;
+            
+            // Marquer les étapes précédentes comme complétées
+            for (let i = 1; i < activeStep; i++) {
+                document.getElementById(`step${i}`).classList.add('completed');
+            }
+            
+            // Activer l'étape courante
+            if (activeStep <= 4) {
+                document.getElementById(`step${activeStep}`).classList.add('active');
+            }
+        }
+        
+        function getStatusText(status) {
+            const statusMap = {
+                'pending': 'En attente',
+                'processing': 'En traitement',
+                'completed': 'Terminé',
+                'cancelled': 'Annulé'
+            };
+            return statusMap[status] || 'En attente';
+        }
+        
+        function generateInvoice(orderId) {
+            showNotification('Génération de la facture en cours...', 'info');
+            
+            // Simulation de génération de facture
+            setTimeout(() => {
+                // En production, générer un PDF réel
+                const invoiceContent = `
+                    Facture Slozw
+                    ==============
+                    
+                    Merci pour votre commande !
+                    Votre facture sera bientôt disponible.
+                    
+                    En attendant, vous pouvez suivre votre commande
+                    depuis votre tableau de bord.
+                `;
+                
+                // Créer un blob et télécharger
+                const blob = new Blob([invoiceContent], { type: 'text/plain' });
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `facture-${orderId}.txt`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+                
+                showNotification('Facture téléchargée', 'success');
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+[file name]: render.yaml
+[file content begin]
+services:
+  - type: web
+    name: slozw-boutique
+    env: static
+    buildCommand: ""
+    staticPublishPath: .
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: public, max-age=3600
+[file content end]

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slozw - Tableau de bord</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Slozw</a>
+            <div class="nav-links">
+                <a href="index.html">Accueil</a>
+                <a href="services.html">Services</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="boutique.html">Boutique</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <!-- Auth buttons seront injectés ici -->
+                <a href="boutique.html#panier" class="panier-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="panier-count">0</span>
+                </a>
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Tableau de bord -->
+    <section class="dashboard-section">
+        <div class="container">
+            <!-- En-tête du dashboard -->
+            <div class="dashboard-header">
+                <div class="welcome-message">
+                    <h1>Bonjour, <span id="userName">Client</span> 👋</h1>
+                    <p>Bienvenue sur votre tableau de bord</p>
+                </div>
+                <div class="user-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="orderCount">0</span>
+                        <span class="stat-label">Commandes</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="projectCount">0</span>
+                        <span class="stat-label">Projets</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="messageCount">0</span>
+                        <span class="stat-label">Messages</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Onglets -->
+            <div class="dashboard-tabs">
+                <button class="tab-btn active" data-tab="overview">Vue d'ensemble</button>
+                <button class="tab-btn" data-tab="orders">Mes commandes</button>
+                <button class="tab-btn" data-tab="projects">Mes projets</button>
+                <button class="tab-btn" data-tab="profile">Mon profil</button>
+                <button class="tab-btn" data-tab="messages">Messages</button>
+            </div>
+
+            <!-- Contenu des onglets -->
+            <div class="tab-content active" id="overviewTab">
+                <div class="dashboard-grid">
+                    <!-- Commandes récentes -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h3>Commandes récentes</h3>
+                            <a href="orders.html" class="view-all">Voir tout</a>
+                        </div>
+                        <div class="order-list" id="recentOrders">
+                            <div class="empty-state">
+                                <i class="fas fa-shopping-bag"></i>
+                                <p>Aucune commande récente</p>
+                                <a href="boutique.html" class="btn btn-outline btn-sm">Parcourir la boutique</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projets en cours -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h3>Projets en cours</h3>
+                            <a href="projects.html" class="view-all">Voir tout</a>
+                        </div>
+                        <div class="order-list" id="activeProjects">
+                            <div class="empty-state">
+                                <i class="fas fa-code"></i>
+                                <p>Aucun projet en cours</p>
+                                <a href="contact.html" class="btn btn-outline btn-sm">Démarrer un projet</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Messages récents -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h3>Messages récents</h3>
+                            <a href="messages.html" class="view-all">Voir tout</a>
+                        </div>
+                        <div class="order-list" id="recentMessages">
+                            <div class="empty-state">
+                                <i class="fas fa-envelope"></i>
+                                <p>Aucun message récent</p>
+                                <a href="contact.html" class="btn btn-outline btn-sm">Envoyer un message</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Actions rapides -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h3>Actions rapides</h3>
+                        </div>
+                        <div class="quick-actions">
+                            <a href="boutique.html" class="btn btn-outline btn-block">
+                                <i class="fas fa-shopping-cart"></i> Nouvelle commande
+                            </a>
+                            <a href="contact.html" class="btn btn-outline btn-block">
+                                <i class="fas fa-headset"></i> Support client
+                            </a>
+                            <a href="profile.html" class="btn btn-outline btn-block">
+                                <i class="fas fa-user-edit"></i> Modifier mon profil
+                            </a>
+                            <button class="btn btn-outline btn-block logout-action">
+                                <i class="fas fa-sign-out-alt"></i> Déconnexion
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Onglet Commandes -->
+            <div class="tab-content" id="ordersTab">
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Toutes mes commandes</h3>
+                    </div>
+                    <div class="orders-table" id="allOrders">
+                        <div class="empty-state">
+                            <i class="fas fa-shopping-bag"></i>
+                            <p>Vous n'avez pas encore passé de commande</p>
+                            <a href="boutique.html" class="btn btn-primary">Découvrir la boutique</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Onglet Profil -->
+            <div class="tab-content" id="profileTab">
+                <div class="dashboard-card">
+                    <div class="profile-form">
+                        <div class="profile-avatar">
+                            <div class="avatar-preview" id="avatarPreview">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="avatar-upload">
+                                <p>Photo de profil</p>
+                                <div class="avatar-actions">
+                                    <input type="file" id="avatarInput" accept="image/*" style="display: none;">
+                                    <button class="btn btn-outline btn-sm" onclick="document.getElementById('avatarInput').click()">
+                                        <i class="fas fa-upload"></i> Changer
+                                    </button>
+                                    <button class="btn btn-outline btn-sm" id="removeAvatar">
+                                        <i class="fas fa-trash"></i> Supprimer
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form id="profileForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="profileFirstName">Prénom</label>
+                                    <input type="text" id="profileFirstName" name="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="profileLastName">Nom</label>
+                                    <input type="text" id="profileLastName" name="lastName" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="profileEmail">Email</label>
+                                <input type="email" id="profileEmail" name="email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="profilePhone">Téléphone</label>
+                                <input type="tel" id="profilePhone" name="phone">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="profileCompany">Entreprise</label>
+                                <input type="text" id="profileCompany" name="company">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="profileAddress">Adresse</label>
+                                <textarea id="profileAddress" name="address" rows="3"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Enregistrer les modifications
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Slozw</h3>
+                    <p>Créateur digital spécialisé en design, développement et e-commerce.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <a href="index.html">Accueil</a>
+                    <a href="services.html">Services</a>
+                    <a href="portfolio.html">Portfolio</a>
+                    <a href="boutique.html">Boutique</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Mon compte</h4>
+                    <a href="dashboard.html">Tableau de bord</a>
+                    <a href="orders.html">Mes commandes</a>
+                    <a href="profile.html">Mon profil</a>
+                    <a href="messages.html">Messages</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Slozw. Tous droits réservés.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-behance"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const user = auth.getCurrentUser();
+            
+            // Rediriger si non connecté
+            if (!user) {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            // Mettre à jour les informations utilisateur
+            document.getElementById('userName').textContent = user.name.split(' ')[0];
+            
+            // Remplir le formulaire de profil
+            if (user.name) {
+                const names = user.name.split(' ');
+                document.getElementById('profileFirstName').value = names[0] || '';
+                document.getElementById('profileLastName').value = names.slice(1).join(' ') || '';
+            }
+            document.getElementById('profileEmail').value = user.email || '';
+            document.getElementById('profilePhone').value = user.phone || '';
+            document.getElementById('profileCompany').value = user.company || '';
+            
+            // Gestion des onglets
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tabId = this.dataset.tab;
+                    
+                    // Mettre à jour les boutons actifs
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Afficher le contenu correspondant
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    document.getElementById(`${tabId}Tab`).classList.add('active');
+                });
+            });
+            
+            // Sauvegarde du profil
+            const profileForm = document.getElementById('profileForm');
+            profileForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const updates = {
+                    name: `${document.getElementById('profileFirstName').value} ${document.getElementById('profileLastName').value}`,
+                    email: document.getElementById('profileEmail').value,
+                    phone: document.getElementById('profilePhone').value,
+                    company: document.getElementById('profileCompany').value,
+                    address: document.getElementById('profileAddress').value
+                };
+                
+                const result = await auth.updateProfile(updates);
+                
+                if (result.success) {
+                    showNotification('Profil mis à jour avec succès', 'success');
+                    document.getElementById('userName').textContent = result.user.name.split(' ')[0];
+                } else {
+                    showNotification(result.message, 'error');
+                }
+            });
+            
+            // Charger les commandes
+            loadUserOrders();
+            
+            // Déconnexion
+            document.querySelector('.logout-action').addEventListener('click', function() {
+                auth.logout();
+                showNotification('Déconnexion réussie', 'success');
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1000);
+            });
+            
+            // Gestion de l'avatar
+            const avatarInput = document.getElementById('avatarInput');
+            const avatarPreview = document.getElementById('avatarPreview');
+            
+            avatarInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        avatarPreview.innerHTML = `<img src="${e.target.result}" alt="Avatar">`;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+            
+            document.getElementById('removeAvatar').addEventListener('click', function() {
+                avatarPreview.innerHTML = '<i class="fas fa-user"></i>';
+            });
+        });
+        
+        function loadUserOrders() {
+            // Charger les commandes depuis localStorage
+            const orders = JSON.parse(localStorage.getItem('userOrders')) || [];
+            const recentOrders = document.getElementById('recentOrders');
+            const allOrders = document.getElementById('allOrders');
+            const user = auth.getCurrentUser();
+            
+            if (!user) return;
+            
+            // Filtrer les commandes de l'utilisateur
+            const userOrders = orders.filter(order => order.userId === user.id);
+            
+            // Mettre à jour les compteurs
+            document.getElementById('orderCount').textContent = userOrders.length;
+            
+            // Afficher les commandes récentes (3 max)
+            if (userOrders.length > 0) {
+                recentOrders.innerHTML = '';
+                userOrders.slice(0, 3).forEach(order => {
+                    const orderDate = new Date(order.date).toLocaleDateString('fr-FR');
+                    recentOrders.innerHTML += `
+                        <div class="order-item">
+                            <div class="order-info">
+                                <h4>Commande #${order.reference}</h4>
+                                <p>${orderDate} • ${order.total}€</p>
+                            </div>
+                            <span class="order-status status-${order.status || 'processing'}">
+                                ${getStatusText(order.status)}
+                            </span>
+                        </div>
+                    `;
+                });
+                
+                // Afficher toutes les commandes
+                allOrders.innerHTML = '';
+                userOrders.forEach(order => {
+                    const orderDate = new Date(order.date).toLocaleDateString('fr-FR');
+                    allOrders.innerHTML += `
+                        <div class="order-item">
+                            <div class="order-info">
+                                <h4>Commande #${order.reference}</h4>
+                                <p>${orderDate} • ${order.total}€</p>
+                                <p>${order.items.length} article(s)</p>
+                            </div>
+                            <div>
+                                <span class="order-status status-${order.status || 'processing'}">
+                                    ${getStatusText(order.status)}
+                                </span>
+                                <a href="order-details.html?id=${order.id}" class="btn btn-outline btn-sm" style="margin-top: 0.5rem;">
+                                    Voir détails
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+        }
+        
+        function getStatusText(status) {
+            const statusMap = {
+                'pending': 'En attente',
+                'processing': 'En traitement',
+                'completed': 'Terminé',
+                'cancelled': 'Annulé'
+            };
+            return statusMap[status] || 'En traitement';
+        }
+        
+        // Simuler le chargement des données
+        setTimeout(() => {
+            loadUserOrders();
+        }, 500);
+    </script>
+</body>
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slozw - Portfolio | Créations Digitales</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .portfolio-item {
+            transition: all 0.5s ease;
+        }
+        
+        .filter-btn {
+            cursor: pointer;
+        }
+        
+        .filter-btn.active {
+            background: #2563eb !important;
+            color: white !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Slozw</a>
+            <div class="nav-links">
+                <a href="index.html">Accueil</a>
+                <a href="services.html">Services</a>
+                <a href="portfolio.html" class="active">Portfolio</a>
+                <a href="boutique.html">Boutique</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <a href="#panier" class="panier-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="panier-count">0</span>
+                </a>
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Portfolio Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Mon Portfolio</h1>
+            <p>Découvrez mes réalisations et projets clients</p>
+        </div>
+    </section>
+
+    <!-- Portfolio Filters -->
+    <section class="section portfolio-filters-section">
+        <div class="container">
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">Tous les projets</button>
+                <button class="filter-btn" data-filter="web">Sites Web</button>
+                <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+                <button class="filter-btn" data-filter="mobile">Applications</button>
+                <button class="filter-btn" data-filter="design">Design</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <section class="section portfolio-grid-section">
+        <div class="container">
+            <div class="portfolio-items">
+                <!-- Projet 1 - E-commerce -->
+                <div class="portfolio-item" data-category="ecommerce" id="projet1">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Boutique Moderne">
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <span class="category-tag">E-commerce</span>
+                                <h3>Boutique Moderne</h3>
+                                <p>Site e-commerce complet avec paiement sécurisé</p>
+                                <div class="project-tags">
+                                    <span>React</span>
+                                    <span>Stripe</span>
+                                    <span>Node.js</span>
+                                </div>
+                                <a href="#" class="view-project">Voir le projet</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Boutique Moderne</h3>
+                        <p>Plateforme e-commerce avec dashboard administrateur</p>
+                    </div>
+                </div>
+
+                <!-- Projet 2 - Web -->
+                <div class="portfolio-item" data-category="web" id="projet2">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dashboard Analytics">
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <span class="category-tag">Web App</span>
+                                <h3>Dashboard Analytics</h3>
+                                <p>Interface d'administration avec données en temps réel</p>
+                                <div class="project-tags">
+                                    <span>Vue.js</span>
+                                    <span>Chart.js</span>
+                                    <span>API REST</span>
+                                </div>
+                                <a href="#" class="view-project">Voir le projet</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Dashboard Analytics</h3>
+                        <p>Application de visualisation de données</p>
+                    </div>
+                </div>
+
+                <!-- Projet 3 - Mobile -->
+                <div class="portfolio-item" data-category="mobile" id="projet3">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="App Fitness">
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <span class="category-tag">Mobile App</span>
+                                <h3>App Fitness</h3>
+                                <p>Application mobile de suivi sportif</p>
+                                <div class="project-tags">
+                                    <span>React Native</span>
+                                    <span>Firebase</span>
+                                    <span>HealthKit</span>
+                                </div>
+                                <a href="#" class="view-project">Voir le projet</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>App Fitness Pro</h3>
+                        <p>Application mobile de coaching sportif</p>
+                    </div>
+                </div>
+
+                <!-- Projet 4 - Design -->
+                <div class="portfolio-item" data-category="design" id="projet4">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="UI Design">
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <span class="category-tag">UI Design</span>
+                                <h3>Système Design</h3>
+                                <p>Design system complet pour application web</p>
+                                <div class="project-tags">
+                                    <span>Figma</span>
+                                    <span>Design System</span>
+                                    <span>Prototype</span>
+                                </div>
+                                <a href="#" class="view-project">Voir le projet</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Système Design</h3>
+                        <p>Bibliothèque de composants UI complète</p>
+                    </div>
+                </div>
+
+                <!-- Projet 5 - E-commerce -->
+                <div class="portfolio-item" data-category="ecommerce" id="projet5">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Boutique Mode">
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <span class="category-tag">E-commerce</span>
+                                <h3>Boutique Mode</h3>
+                                <p>Site e-commerce pour marque de vêtements</p>
+                                <div class="project-tags">
+                                    <span>Shopify</span>
+                                    <span>Liquid</span>
+                                    <span>JavaScript</span>
+                                </div>
+                                <a href="#" class="view-project">Voir le projet</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Boutique Mode</h3>
+                        <p>Site e-commerce de prêt-à-porter</p>
+                    </div>
+                </div>
+
+                <!-- Projet 6 - Web -->
+                <div class="portfolio-item" data-category="web" id="projet6">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Site Corporate">
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <span class="category-tag">Site Web</span>
+                                <h3>Site Corporate</h3>
+                                <p>Site vitrine professionnel pour entreprise</p>
+                                <div class="project-tags">
+                                    <span>HTML/CSS</span>
+                                    <span>JavaScript</span>
+                                    <span>PHP</span>
+                                </div>
+                                <a href="#" class="view-project">Voir le projet</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Site Corporate</h3>
+                        <p>Site vitrine avec portfolio intégré</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Projets réalisés</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Satisfaction client</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">Clients heureux</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">5 ans</div>
+                    <div class="stat-label">D'expérience</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Un projet similaire en tête ?</h2>
+                <p>Discutons de la création de votre site ou application</p>
+                <a href="contact.html" class="btn btn-primary">Discuter de mon projet</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Slozw</h3>
+                    <p>Créateur digital spécialisé en design, développement et e-commerce.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <a href="index.html">Accueil</a>
+                    <a href="services.html">Services</a>
+                    <a href="portfolio.html">Portfolio</a>
+                    <a href="boutique.html">Boutique</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-envelope"></i> contact@slozw.com</p>
+                    <p><i class="fas fa-phone"></i> +33 1 23 45 67 89</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Paris, France</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Slozw. Tous droits réservés.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-behance"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+        // Initialisation spécifique au portfolio
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🎨 Portfolio chargé');
+            
+            // Initialiser les filtres portfolio
+            initPortfolioFilters();
+            
+            // Gestion des liens "Voir le projet"
+            document.querySelectorAll('.view-project').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const projetTitle = this.closest('.portfolio-item').querySelector('h3').textContent;
+                    showNotification(`Détails du projet "${projetTitle}" - Page à développer`, 'info');
+                });
+            });
+            
+            console.log('✅ Portfolio initialisé avec succès');
+        });
+        
+        // Fonction de notification
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            if (!notification) return;
+            
+            notification.textContent = message;
+            notification.className = 'notification';
+            notification.classList.add(type, 'show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
