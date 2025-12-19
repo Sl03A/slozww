@@ -1,165 +1,20 @@
-[file name]: index.html
-[file content begin]
 <!DOCTYPE html>
-<html lang="fr" data-lang="fr">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slozw - Accueil | Créations Digitales</title>
-    <meta name="description" content="Créateur digital spécialisé en design, développement web et solutions e-commerce sur mesure. Transformez vos idées en réalité digitale.">
+    <title>Slozw - Créations Digitales | Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- EmailJS pour les emails automatiques -->
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script>
-        (function(){
-            emailjs.init("YOUR_PUBLIC_KEY"); // Remplacez par votre clé EmailJS
-        })();
-    </script>
-    <style>
-        /* Styles spécifiques pour le popup de cookies */
-        .cookie-popup {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            padding: 1.5rem;
-            max-width: 350px;
-            z-index: 9999;
-            transform: translateY(100px);
-            opacity: 0;
-            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            border: 1px solid #e2e8f0;
-        }
-        
-        .cookie-popup.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        .cookie-popup.hide {
-            transform: translateY(100px);
-            opacity: 0;
-        }
-        
-        .cookie-popup-content h3 {
-            margin-bottom: 0.5rem;
-            color: #1e293b;
-            font-size: 1.2rem;
-        }
-        
-        .cookie-popup-content p {
-            color: #64748b;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            line-height: 1.5;
-        }
-        
-        .cookie-popup-actions {
-            display: flex;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-        }
-        
-        .cookie-popup-btn {
-            padding: 0.6rem 1.2rem;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s;
-            flex: 1;
-            min-width: 100px;
-        }
-        
-        .cookie-popup-accept {
-            background: #2563eb;
-            color: white;
-        }
-        
-        .cookie-popup-accept:hover {
-            background: #1d4ed8;
-        }
-        
-        .cookie-popup-reject {
-            background: #f8fafc;
-            color: #64748b;
-            border: 1px solid #e2e8f0;
-        }
-        
-        .cookie-popup-reject:hover {
-            background: #f1f5f9;
-        }
-        
-        .cookie-popup-close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: none;
-            border: none;
-            color: #94a3b8;
-            cursor: pointer;
-            font-size: 1.2rem;
-            padding: 5px;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: background 0.3s;
-        }
-        
-        .cookie-popup-close:hover {
-            background: #f8fafc;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .cookie-popup {
-                left: 20px;
-                right: 20px;
-                max-width: none;
-                bottom: 10px;
-            }
-            
-            .cookie-popup-actions {
-                flex-direction: column;
-            }
-            
-            .cookie-popup-btn {
-                width: 100%;
-            }
-        }
-    </style>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-    <!-- Popup Cookies (Nouveau système) -->
-    <div class="cookie-popup" id="cookiePopup">
-        <button class="cookie-popup-close" id="cookiePopupClose">
-            <i class="fas fa-times"></i>
-        </button>
-        <div class="cookie-popup-content">
-            <h3>🍪 Cookies et confidentialité</h3>
-            <p>Nous utilisons des cookies essentiels pour le bon fonctionnement du site. En continuant, vous acceptez notre politique de confidentialité.</p>
-            <div class="cookie-popup-actions">
-                <button class="cookie-popup-btn cookie-popup-reject" id="cookiePopupReject">
-                    Refuser
-                </button>
-                <button class="cookie-popup-btn cookie-popup-accept" id="cookiePopupAccept">
-                    Accepter
-                </button>
-            </div>
-        </div>
-    </div>
-
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo">Slozw</a>
+            <a href="index.html" class="logo">
+                <i class="fas fa-code"></i> Slozw
+            </a>
             <div class="nav-links">
                 <a href="index.html" class="active">Accueil</a>
                 <a href="services.html">Services</a>
@@ -168,7 +23,7 @@
                 <a href="contact.html">Contact</a>
             </div>
             <div class="nav-actions">
-                <a href="boutique.html#panier" class="panier-btn">
+                <a href="panier.html" class="panier-btn">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="panier-count">0</span>
                 </a>
@@ -180,13 +35,18 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Créations Digitales d'Excellence</h1>
-            <p>Design, Développement & Solutions E-commerce sur mesure</p>
-            <div class="hero-buttons">
-                <a href="portfolio.html" class="btn btn-primary">Voir mon travail</a>
-                <a href="contact.html" class="btn btn-secondary">Me contacter</a>
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Créateur Digital Passionné</h1>
+                <p>Je transforme vos idées en expériences digitales mémorables. Sites web, applications mobiles et solutions e-commerce sur mesure.</p>
+                <div class="hero-actions">
+                    <a href="portfolio.html" class="btn btn-primary">Voir mon portfolio</a>
+                    <a href="contact.html" class="btn btn-secondary">Me contacter</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Développement Web">
             </div>
         </div>
     </section>
@@ -195,31 +55,30 @@
     <section class="section services-preview">
         <div class="container">
             <h2 class="section-title">Mes Services</h2>
-            <p class="section-subtitle">Des solutions complètes pour votre présence digitale</p>
-            
+            <p class="section-subtitle">Des solutions adaptées à vos besoins</p>
             <div class="services-grid">
                 <div class="service-card">
-                    <i class="fas fa-paint-brush"></i>
-                    <h3>UI/UX Design</h3>
-                    <p>Interfaces intuitives et esthétiques</p>
-                    <a href="services.html#design" class="service-link">En savoir plus →</a>
-                </div>
-                
-                <div class="service-card">
-                    <i class="fas fa-code"></i>
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
                     <h3>Développement Web</h3>
-                    <p>Sites performants et responsives</p>
-                    <a href="services.html#developpement" class="service-link">En savoir plus →</a>
+                    <p>Sites vitrines, applications web sur mesure avec technologies modernes.</p>
                 </div>
-                
                 <div class="service-card">
-                    <i class="fas fa-shopping-cart"></i>
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
                     <h3>E-commerce</h3>
-                    <p>Boutiques en ligne optimisées</p>
-                    <a href="services.html#ecommerce" class="service-link">En savoir plus →</a>
+                    <p>Boutiques en ligne optimisées pour la conversion et le référencement.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Applications Mobile</h3>
+                    <p>Applications iOS et Android natives ou cross-platform.</p>
                 </div>
             </div>
-            
             <div class="text-center">
                 <a href="services.html" class="btn btn-outline">Voir tous les services</a>
             </div>
@@ -229,74 +88,33 @@
     <!-- Portfolio Preview -->
     <section class="section portfolio-preview">
         <div class="container">
-            <h2 class="section-title">Derniers Projets</h2>
-            <p class="section-subtitle">Quelques-unes de mes réalisations récentes</p>
-            
-            <div class="portfolio-grid">
-                <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Site E-commerce" loading="lazy">
-                    <div class="project-info">
-                        <h3>Boutique Moderne</h3>
-                        <p>E-commerce avec paiement sécurisé</p>
-                        <a href="portfolio.html#projet1" class="project-link">Voir le projet</a>
+            <h2 class="section-title">Projets Récents</h2>
+            <p class="section-subtitle">Découvrez mes dernières réalisations</p>
+            <div class="portfolio-preview-grid">
+                <div class="project-preview">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="E-commerce">
+                    <div class="preview-overlay">
+                        <span class="preview-category">E-commerce</span>
+                        <h4>Boutique Moderne</h4>
                     </div>
                 </div>
-                
-                <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Dashboard" loading="lazy">
-                    <div class="project-info">
-                        <h3>Dashboard Analytics</h3>
-                        <p>Interface d'administration complète</p>
-                        <a href="portfolio.html#projet2" class="project-link">Voir le projet</a>
+                <div class="project-preview">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Dashboard">
+                    <div class="preview-overlay">
+                        <span class="preview-category">Web App</span>
+                        <h4>Dashboard Analytics</h4>
                     </div>
                 </div>
-                
-                <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="App Mobile" loading="lazy">
-                    <div class="project-info">
-                        <h3>Application Mobile</h3>
-                        <p>App iOS & Android native</p>
-                        <a href="portfolio.html#projet3" class="project-link">Voir le projet</a>
+                <div class="project-preview">
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Mobile App">
+                    <div class="preview-overlay">
+                        <span class="preview-category">Mobile</span>
+                        <h4>App Fitness Pro</h4>
                     </div>
                 </div>
             </div>
-            
             <div class="text-center">
-                <a href="portfolio.html" class="btn btn-outline">Voir tout le portfolio</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Newsletter Section -->
-    <section class="section newsletter-section">
-        <div class="container">
-            <div class="newsletter-box">
-                <h2>Restez informé</h2>
-                <p>Recevez des conseils digitaux et des offres exclusives</p>
-                <form id="newsletterForm" class="newsletter-form">
-                    <input type="email" id="newsletterEmail" placeholder="Votre email" required>
-                    <input type="text" id="newsletterName" placeholder="Votre prénom (optionnel)">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-paper-plane"></i> S'inscrire
-                    </button>
-                </form>
-                <p class="newsletter-disclaimer">
-                    En vous inscrivant, vous acceptez notre <a href="privacy.html">politique de confidentialité</a>.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="section cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Prêt à donner vie à votre projet ?</h2>
-                <p>Contactez-moi pour discuter de vos besoins</p>
-                <div class="cta-buttons">
-                    <a href="contact.html" class="btn btn-primary">Prendre rendez-vous</a>
-                    <a href="boutique.html" class="btn btn-secondary">Voir la boutique</a>
-                </div>
+                <a href="portfolio.html" class="btn btn-primary">Voir tout le portfolio</a>
             </div>
         </div>
     </section>
@@ -306,14 +124,9 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h3>Slozw</h3>
-                    <p>Créateur digital spécialisé en design, développement et e-commerce.</p>
-                    <div class="legal-links">
-                        <a href="privacy.html">Confidentialité</a>
-                        <a href="#" id="openCookieSettings">Cookies</a>
-                    </div>
+                    <h3><i class="fas fa-code"></i> Slozw</h3>
+                    <p>Créateur digital spécialisé en design, développement et e-commerce depuis 5 ans.</p>
                 </div>
-                
                 <div class="footer-col">
                     <h4>Navigation</h4>
                     <a href="index.html">Accueil</a>
@@ -322,26 +135,17 @@
                     <a href="boutique.html">Boutique</a>
                     <a href="contact.html">Contact</a>
                 </div>
-                
                 <div class="footer-col">
                     <h4>Contact</h4>
                     <p><i class="fas fa-envelope"></i> contact@slozw.com</p>
                     <p><i class="fas fa-phone"></i> +33 1 23 45 67 89</p>
                     <p><i class="fas fa-map-marker-alt"></i> Paris, France</p>
                 </div>
-
-                <div class="footer-col">
-                    <h4>Informations</h4>
-                    <a href="privacy.html">Confidentialité</a>
-                    <a href="#" id="openCookieSettings">Cookies</a>
-                    <a href="mentions-legales.html">Mentions légales</a>
-                </div>
             </div>
-            
             <div class="footer-bottom">
-                <p>&copy; 2024 Slozw. Tous droits réservés.</p>
+                <p>© 2024 Slozw. Tous droits réservés.</p>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
                     <a href="#"><i class="fab fa-linkedin"></i></a>
                     <a href="#"><i class="fab fa-behance"></i></a>
                 </div>
@@ -352,153 +156,21 @@
     <!-- Notification -->
     <div class="notification" id="notification"></div>
 
-    <!-- Script -->
+    <!-- Scripts -->
     <script src="script.js"></script>
     <script>
-        // Gestion du nouveau popup de cookies
         document.addEventListener('DOMContentLoaded', function() {
-            const cookiePopup = document.getElementById('cookiePopup');
-            const cookieAccept = document.getElementById('cookiePopupAccept');
-            const cookieReject = document.getElementById('cookiePopupReject');
-            const cookieClose = document.getElementById('cookiePopupClose');
+            // Gestion du panier
+            updateCartCount();
             
-            // Vérifier si l'utilisateur a déjà répondu
-            const cookieChoice = localStorage.getItem('cookieChoice');
+            // Menu mobile
+            initMobileMenu();
             
-            if (!cookieChoice) {
-                // Afficher le popup après 1 seconde
-                setTimeout(() => {
-                    cookiePopup.classList.add('show');
-                }, 1000);
-            }
+            // Animations
+            animateOnScroll();
             
-            // Accepter les cookies
-            cookieAccept.addEventListener('click', function() {
-                localStorage.setItem('cookieChoice', 'accepted');
-                cookiePopup.classList.remove('show');
-                cookiePopup.classList.add('hide');
-                
-                // Masquer complètement après l'animation
-                setTimeout(() => {
-                    cookiePopup.style.display = 'none';
-                }, 500);
-                
-                // Notification
-                showNotification('Préférences de cookies enregistrées', 'success');
-            });
-            
-            // Refuser les cookies
-            cookieReject.addEventListener('click', function() {
-                localStorage.setItem('cookieChoice', 'rejected');
-                cookiePopup.classList.remove('show');
-                cookiePopup.classList.add('hide');
-                
-                // Masquer complètement après l'animation
-                setTimeout(() => {
-                    cookiePopup.style.display = 'none';
-                }, 500);
-                
-                // Notification
-                showNotification('Préférences de cookies enregistrées', 'success');
-            });
-            
-            // Fermer le popup (sans choix)
-            cookieClose.addEventListener('click', function() {
-                cookiePopup.classList.remove('show');
-                cookiePopup.classList.add('hide');
-                
-                setTimeout(() => {
-                    cookiePopup.style.display = 'none';
-                }, 500);
-                
-                // Si l'utilisateur ferme sans répondre, on considère qu'il a refusé
-                if (!cookieChoice) {
-                    localStorage.setItem('cookieChoice', 'closed');
-                }
-            });
-            
-            // Fonction de notification (récupérée de script.js)
-            function showNotification(message, type = 'success') {
-                const notification = document.getElementById('notification');
-                if (!notification) return;
-                
-                notification.textContent = message;
-                notification.className = 'notification';
-                notification.classList.add(type, 'show');
-                
-                setTimeout(() => {
-                    notification.classList.remove('show');
-                }, 3000);
-            }
-            
-            // Gérer le bouton "Cookies" dans le footer
-            const openCookieSettings = document.getElementById('openCookieSettings');
-            if (openCookieSettings) {
-                openCookieSettings.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    // Réinitialiser le choix pour réafficher le popup
-                    localStorage.removeItem('cookieChoice');
-                    cookiePopup.style.display = 'block';
-                    setTimeout(() => {
-                        cookiePopup.classList.remove('hide');
-                        cookiePopup.classList.add('show');
-                    }, 10);
-                    
-                    // Faire défiler vers le haut
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-            }
-            
-            // Gestion du formulaire newsletter
-            const newsletterForm = document.getElementById('newsletterForm');
-            if (newsletterForm) {
-                newsletterForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    const email = document.getElementById('newsletterEmail').value;
-                    const name = document.getElementById('newsletterName').value || 'Client';
-                    
-                    if (!email) {
-                        showNotification('Veuillez entrer votre email', 'error');
-                        return;
-                    }
-                    
-                    // Envoyer l'email de bienvenue
-                    sendWelcomeEmail(email, name);
-                    
-                    // Réinitialiser le formulaire
-                    newsletterForm.reset();
-                    
-                    showNotification('Merci pour votre inscription ! Votre guide arrive dans votre boîte mail.', 'success');
-                });
-            }
-            
-            // Fonction pour envoyer l'email de bienvenue
-            function sendWelcomeEmail(email, name = "Client") {
-                console.log(`📧 Envoi email bienvenue à: ${email}`);
-                
-                // Données pour l'email
-                const templateParams = {
-                    to_name: name,
-                    to_email: email,
-                    guide_url: "https://slozw.com/guides/debuter-en-ligne.pdf",
-                    site_url: "https://slozw.com",
-                    date: new Date().toLocaleDateString('fr-FR')
-                };
-                
-                // Envoyer via EmailJS
-                emailjs.send("service_slozw", "template_bienvenue", templateParams)
-                    .then(function(response) {
-                        console.log('✅ Email bienvenue envoyé:', response.status, response.text);
-                        // Sauvegarder dans localStorage pour éviter doublons
-                        localStorage.setItem(`emailSent_${email}`, 'true');
-                    }, function(error) {
-                        console.log('❌ Erreur email:', error);
-                    });
-            }
+            console.log('🚀 Site initialisé avec succès');
         });
     </script>
 </body>
 </html>
-[file content end]
