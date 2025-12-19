@@ -1,8 +1,6 @@
-[file name]: render.yaml
-[file content begin]
 services:
   - type: web
-    name: slozw-boutique
+    name: slozw-portfolio
     env: static
     buildCommand: ""
     staticPublishPath: .
@@ -14,4 +12,15 @@ services:
       - path: /*
         name: Cache-Control
         value: public, max-age=3600
-[file content end]
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=31536000
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
