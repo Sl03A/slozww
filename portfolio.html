@@ -8,16 +8,57 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .portfolio-item {
-            transition: all 0.5s ease;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .portfolio-item.hidden {
+            opacity: 0;
+            transform: scale(0.8);
+            height: 0;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
         }
         
         .filter-btn {
             cursor: pointer;
+            transition: all 0.3s ease;
         }
         
         .filter-btn.active {
-            background: #2563eb !important;
+            background: linear-gradient(135deg, #2563eb, #3b82f6) !important;
             color: white !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+        
+        .project-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background: white;
+            max-width: 900px;
+            margin: 40px auto;
+            border-radius: 16px;
+            overflow: hidden;
+            animation: modalFade 0.4s ease;
+        }
+        
+        @keyframes modalFade {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -25,7 +66,9 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo">Slozw</a>
+            <a href="index.html" class="logo">
+                <i class="fas fa-code"></i> Slozw
+            </a>
             <div class="nav-links">
                 <a href="index.html">Accueil</a>
                 <a href="services.html">Services</a>
@@ -34,7 +77,7 @@
                 <a href="contact.html">Contact</a>
             </div>
             <div class="nav-actions">
-                <a href="#panier" class="panier-btn">
+                <a href="panier.html" class="panier-btn">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="panier-count">0</span>
                 </a>
@@ -57,11 +100,24 @@
     <section class="section portfolio-filters-section">
         <div class="container">
             <div class="filters">
-                <button class="filter-btn active" data-filter="all">Tous les projets</button>
-                <button class="filter-btn" data-filter="web">Sites Web</button>
-                <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
-                <button class="filter-btn" data-filter="mobile">Applications</button>
-                <button class="filter-btn" data-filter="design">Design</button>
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fas fa-th-large"></i> Tous les projets
+                </button>
+                <button class="filter-btn" data-filter="web">
+                    <i class="fas fa-globe"></i> Sites Web
+                </button>
+                <button class="filter-btn" data-filter="ecommerce">
+                    <i class="fas fa-shopping-cart"></i> E-commerce
+                </button>
+                <button class="filter-btn" data-filter="mobile">
+                    <i class="fas fa-mobile-alt"></i> Applications
+                </button>
+                <button class="filter-btn" data-filter="design">
+                    <i class="fas fa-palette"></i> Design
+                </button>
+            </div>
+            <div class="filter-info">
+                <span id="project-count">6</span> projets affichés
             </div>
         </div>
     </section>
@@ -69,150 +125,8 @@
     <!-- Portfolio Grid -->
     <section class="section portfolio-grid-section">
         <div class="container">
-            <div class="portfolio-items">
-                <!-- Projet 1 - E-commerce -->
-                <div class="portfolio-item" data-category="ecommerce" id="projet1">
-                    <div class="portfolio-image">
-                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Boutique Moderne">
-                        <div class="portfolio-overlay">
-                            <div class="overlay-content">
-                                <span class="category-tag">E-commerce</span>
-                                <h3>Boutique Moderne</h3>
-                                <p>Site e-commerce complet avec paiement sécurisé</p>
-                                <div class="project-tags">
-                                    <span>React</span>
-                                    <span>Stripe</span>
-                                    <span>Node.js</span>
-                                </div>
-                                <a href="#" class="view-project">Voir le projet</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Boutique Moderne</h3>
-                        <p>Plateforme e-commerce avec dashboard administrateur</p>
-                    </div>
-                </div>
-
-                <!-- Projet 2 - Web -->
-                <div class="portfolio-item" data-category="web" id="projet2">
-                    <div class="portfolio-image">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dashboard Analytics">
-                        <div class="portfolio-overlay">
-                            <div class="overlay-content">
-                                <span class="category-tag">Web App</span>
-                                <h3>Dashboard Analytics</h3>
-                                <p>Interface d'administration avec données en temps réel</p>
-                                <div class="project-tags">
-                                    <span>Vue.js</span>
-                                    <span>Chart.js</span>
-                                    <span>API REST</span>
-                                </div>
-                                <a href="#" class="view-project">Voir le projet</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Dashboard Analytics</h3>
-                        <p>Application de visualisation de données</p>
-                    </div>
-                </div>
-
-                <!-- Projet 3 - Mobile -->
-                <div class="portfolio-item" data-category="mobile" id="projet3">
-                    <div class="portfolio-image">
-                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="App Fitness">
-                        <div class="portfolio-overlay">
-                            <div class="overlay-content">
-                                <span class="category-tag">Mobile App</span>
-                                <h3>App Fitness</h3>
-                                <p>Application mobile de suivi sportif</p>
-                                <div class="project-tags">
-                                    <span>React Native</span>
-                                    <span>Firebase</span>
-                                    <span>HealthKit</span>
-                                </div>
-                                <a href="#" class="view-project">Voir le projet</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>App Fitness Pro</h3>
-                        <p>Application mobile de coaching sportif</p>
-                    </div>
-                </div>
-
-                <!-- Projet 4 - Design -->
-                <div class="portfolio-item" data-category="design" id="projet4">
-                    <div class="portfolio-image">
-                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="UI Design">
-                        <div class="portfolio-overlay">
-                            <div class="overlay-content">
-                                <span class="category-tag">UI Design</span>
-                                <h3>Système Design</h3>
-                                <p>Design system complet pour application web</p>
-                                <div class="project-tags">
-                                    <span>Figma</span>
-                                    <span>Design System</span>
-                                    <span>Prototype</span>
-                                </div>
-                                <a href="#" class="view-project">Voir le projet</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Système Design</h3>
-                        <p>Bibliothèque de composants UI complète</p>
-                    </div>
-                </div>
-
-                <!-- Projet 5 - E-commerce -->
-                <div class="portfolio-item" data-category="ecommerce" id="projet5">
-                    <div class="portfolio-image">
-                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Boutique Mode">
-                        <div class="portfolio-overlay">
-                            <div class="overlay-content">
-                                <span class="category-tag">E-commerce</span>
-                                <h3>Boutique Mode</h3>
-                                <p>Site e-commerce pour marque de vêtements</p>
-                                <div class="project-tags">
-                                    <span>Shopify</span>
-                                    <span>Liquid</span>
-                                    <span>JavaScript</span>
-                                </div>
-                                <a href="#" class="view-project">Voir le projet</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Boutique Mode</h3>
-                        <p>Site e-commerce de prêt-à-porter</p>
-                    </div>
-                </div>
-
-                <!-- Projet 6 - Web -->
-                <div class="portfolio-item" data-category="web" id="projet6">
-                    <div class="portfolio-image">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Site Corporate">
-                        <div class="portfolio-overlay">
-                            <div class="overlay-content">
-                                <span class="category-tag">Site Web</span>
-                                <h3>Site Corporate</h3>
-                                <p>Site vitrine professionnel pour entreprise</p>
-                                <div class="project-tags">
-                                    <span>HTML/CSS</span>
-                                    <span>JavaScript</span>
-                                    <span>PHP</span>
-                                </div>
-                                <a href="#" class="view-project">Voir le projet</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Site Corporate</h3>
-                        <p>Site vitrine avec portfolio intégré</p>
-                    </div>
-                </div>
+            <div class="portfolio-items" id="portfolio-container">
+                <!-- Les projets seront affichés ici dynamiquement -->
             </div>
         </div>
     </section>
@@ -220,24 +134,22 @@
     <!-- Stats Section -->
     <section class="section stats-section">
         <div class="container">
+            <h2 class="section-title">Mes Statistiques</h2>
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-number">50+</div>
+                    <div class="stat-number" data-count="50">0</div>
                     <div class="stat-label">Projets réalisés</div>
                 </div>
-                
                 <div class="stat-card">
-                    <div class="stat-number">100%</div>
+                    <div class="stat-number" data-count="100">0</div>
                     <div class="stat-label">Satisfaction client</div>
                 </div>
-                
                 <div class="stat-card">
-                    <div class="stat-number">30+</div>
+                    <div class="stat-number" data-count="30">0</div>
                     <div class="stat-label">Clients heureux</div>
                 </div>
-                
                 <div class="stat-card">
-                    <div class="stat-number">5 ans</div>
+                    <div class="stat-number" data-count="5">0</div>
                     <div class="stat-label">D'expérience</div>
                 </div>
             </div>
@@ -250,20 +162,36 @@
             <div class="cta-content">
                 <h2>Un projet similaire en tête ?</h2>
                 <p>Discutons de la création de votre site ou application</p>
-                <a href="contact.html" class="btn btn-primary">Discuter de mon projet</a>
+                <a href="contact.html" class="btn btn-primary">
+                    <i class="fas fa-comments"></i> Discuter de mon projet
+                </a>
             </div>
         </div>
     </section>
+
+    <!-- Modal pour détails projet -->
+    <div id="project-modal" class="project-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title"></h2>
+                <button class="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="modal-content"></div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h3>Slozw</h3>
+                    <h3><i class="fas fa-code"></i> Slozw</h3>
                     <p>Créateur digital spécialisé en design, développement et e-commerce.</p>
                 </div>
-                
                 <div class="footer-col">
                     <h4>Navigation</h4>
                     <a href="index.html">Accueil</a>
@@ -272,7 +200,6 @@
                     <a href="boutique.html">Boutique</a>
                     <a href="contact.html">Contact</a>
                 </div>
-                
                 <div class="footer-col">
                     <h4>Contact</h4>
                     <p><i class="fas fa-envelope"></i> contact@slozw.com</p>
@@ -280,11 +207,10 @@
                     <p><i class="fas fa-map-marker-alt"></i> Paris, France</p>
                 </div>
             </div>
-            
             <div class="footer-bottom">
-                <p>&copy; 2024 Slozw. Tous droits réservés.</p>
+                <p>© 2024 Slozw. Tous droits réservés.</p>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
                     <a href="#"><i class="fab fa-linkedin"></i></a>
                     <a href="#"><i class="fab fa-behance"></i></a>
                 </div>
@@ -298,38 +224,97 @@
     <!-- Scripts -->
     <script src="script.js"></script>
     <script>
-        // Initialisation spécifique au portfolio
+        // Données des projets
+        const projects = [
+            {
+                id: 1,
+                title: "Boutique Moderne",
+                category: "ecommerce",
+                description: "Site e-commerce complet avec paiement sécurisé",
+                longDescription: "Plateforme e-commerce complète avec système de gestion des stocks, paiements sécurisés via Stripe, tableau de bord administrateur et interface utilisateur optimisée pour la conversion.",
+                image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                tags: ["React", "Stripe", "Node.js", "MongoDB"],
+                client: "FashionBrand Co",
+                date: "Janvier 2024",
+                link: "#"
+            },
+            {
+                id: 2,
+                title: "Dashboard Analytics",
+                category: "web",
+                description: "Interface d'administration avec données en temps réel",
+                longDescription: "Application web de business intelligence avec visualisation de données en temps réel, rapports personnalisables et notifications push.",
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                tags: ["Vue.js", "Chart.js", "API REST", "WebSocket"],
+                client: "DataCorp Inc",
+                date: "Décembre 2023",
+                link: "#"
+            },
+            {
+                id: 3,
+                title: "App Fitness Pro",
+                category: "mobile",
+                description: "Application mobile de suivi sportif",
+                longDescription: "Application fitness complète avec plans d'entraînement personnalisés, suivi nutritionnel, intégration avec wearables et communauté sociale.",
+                image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                tags: ["React Native", "Firebase", "HealthKit", "Redux"],
+                client: "FitLife Studios",
+                date: "Novembre 2023",
+                link: "#"
+            },
+            {
+                id: 4,
+                title: "Système Design",
+                category: "design",
+                description: "Design system complet pour application web",
+                longDescription: "Système de design complet avec bibliothèque de composants, guidelines d'utilisation, tokens de design et documentation détaillée.",
+                image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                tags: ["Figma", "Design System", "Prototype", "Storybook"],
+                client: "TechStartup",
+                date: "Octobre 2023",
+                link: "#"
+            },
+            {
+                id: 5,
+                title: "Boutique Mode",
+                category: "ecommerce",
+                description: "Site e-commerce pour marque de vêtements",
+                longDescription: "Boutique en ligne premium avec catalogue produit avancé, essayage virtuel, personnalisation et intégration ERP.",
+                image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                tags: ["Shopify", "Liquid", "JavaScript", "SASS"],
+                client: "LuxeMode Paris",
+                date: "Septembre 2023",
+                link: "#"
+            },
+            {
+                id: 6,
+                title: "Site Corporate",
+                category: "web",
+                description: "Site vitrine professionnel pour entreprise",
+                longDescription: "Site corporate responsive avec portfolio intégré, blog, système de contact avancé et optimisation SEO complète.",
+                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                tags: ["HTML/CSS", "JavaScript", "PHP", "MySQL"],
+                client: "BusinessSolutions SARL",
+                date: "Août 2023",
+                link: "#"
+            }
+        ];
+
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('🎨 Portfolio chargé');
+            // Initialiser le portfolio
+            initPortfolio();
             
-            // Initialiser les filtres portfolio
-            initPortfolioFilters();
+            // Initialiser les animations des stats
+            initStatsAnimation();
             
-            // Gestion des liens "Voir le projet"
-            document.querySelectorAll('.view-project').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const projetTitle = this.closest('.portfolio-item').querySelector('h3').textContent;
-                    showNotification(`Détails du projet "${projetTitle}" - Page à développer`, 'info');
-                });
-            });
+            // Gestion du panier
+            updateCartCount();
             
-            console.log('✅ Portfolio initialisé avec succès');
+            // Menu mobile
+            initMobileMenu();
+            
+            console.log('🎨 Portfolio initialisé avec succès');
         });
-        
-        // Fonction de notification
-        function showNotification(message, type = 'success') {
-            const notification = document.getElementById('notification');
-            if (!notification) return;
-            
-            notification.textContent = message;
-            notification.className = 'notification';
-            notification.classList.add(type, 'show');
-            
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 3000);
-        }
     </script>
 </body>
 </html>
